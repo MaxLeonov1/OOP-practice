@@ -1,0 +1,15 @@
+[{
+    "q": "What is the formula of work in isotermal process?",
+    "d": "4",
+    "a": "n*R*T*ln(V2/V1)"
+},
+{
+    "q": "Value of the main gas constant?",
+    "d": "1",
+    "a": "8,31"
+},
+ {
+    "q": "Input adiabatic coefficient formula",
+    "d": "3",
+    "a": "Cp/Cv"
+}]
