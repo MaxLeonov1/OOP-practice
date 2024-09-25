@@ -9,11 +9,13 @@ class Question():
         self.ques_score = self.score_calc()
 
     def score_calc(self):
-        return self.difficulty*10
+        return int(self.difficulty)*10
 
     def get_score(self):
         if input() == 'get score':
             print(f'Your score is ')
+        else:
+            pass
 
     def is_correct(self):
         if input() == self.answer:
@@ -24,8 +26,8 @@ class Question():
             return False
 
     def build_qustion(self):
-        print(f'Question: {self.text}'
-              f'Difficulty: {self.difficulty}')
+        print(f'Question: {self.text}')
+        print(f'Difficulty: {self.difficulty}')
 
     def question_reply_pos(self):
         print(f'Your answer is correct, you resive {self.ques_score}')
