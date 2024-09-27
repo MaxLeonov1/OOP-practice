@@ -2,22 +2,39 @@ from main import Question
 import json
 import random
 with open('questions', 'r', encoding='utf-8') as file:
-
     data = json.loads(file.read())
 
-score = 0
-Q = []
+user_ans_list = []
+class Quiz():
+    def __init__(self,data):
+        self.score = 0
+        self.Q = []
+        self.data = data
+        self.ans_list = []
 
-for qwest in data:
-    Q.append(Question(qwest['q'],qwest['d'],qwest['a']))
+    def Q_table(self):
+        for qwest in self.data:
+            self.Q.append(Question(qwest['q'], qwest['d'], qwest['a']))
 
-random.shuffle(Q)
+    def Quizing(self):
+        global user_ans_list
+        self.Q_table()
+        random.shuffle(self.Q)
+        for q in self.Q:
+            print(q.build_qustion())
+            if q.is_correct() == True:
+                print(q.question_reply_pos())
+                self.score += q.ques_score
+                self.ans_list.append(q.user_ans)
+            else:
+                print(q.question_reply_neg())
+                self.ans_list.append(q.user_ans)
+        user_ans_list.append((self.ans_list,self.score))
 
-for q in Q:
-    q.build_qustion()
-    q.get_score()
-    if q.is_correct() == True:
-        q.question_reply_pos()
-        score += q.ques_score
-    elif q.is_correct() == False:
-        q.question_reply_neg()
+
+
+quiz = Quiz(data)
+quiz.Quizing()
+print(user_ans_list)
+
+
